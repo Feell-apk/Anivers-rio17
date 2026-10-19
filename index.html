@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
   <meta name="theme-color" content="#05070d">
 
   <title>Convite — 17 anos</title>
@@ -18,7 +17,6 @@
       --neon:#a8ff12;
       --neon2:#7dff00;
       --dark:#03050a;
-      --panel:rgba(4,9,12,.88);
       --white:#f4f8f2;
     }
 
@@ -127,7 +125,6 @@
       color:#b5c5b0;
       margin-bottom:30px;
       text-transform:uppercase;
-
       animation:pulseText 2s infinite;
     }
 
@@ -738,6 +735,69 @@
     }
 
     /* =========================
+       PIX
+    ========================= */
+
+    .pixBox{
+      margin-top:8px;
+      padding-top:8px;
+      border-top:1px solid rgba(168,255,18,.12);
+    }
+
+    .pixKey{
+      display:block;
+
+      margin-top:5px;
+
+      color:#dfe7dc;
+
+      font-size:12px;
+
+      word-break:break-all;
+    }
+
+    .copyPixBtn{
+      width:100%;
+
+      margin-top:8px;
+
+      padding:9px 12px;
+
+      border:1px solid var(--neon);
+
+      border-radius:7px;
+
+      background:var(--neon);
+
+      color:#071000;
+
+      font-family:'Orbitron',sans-serif;
+
+      font-size:10px;
+
+      font-weight:800;
+
+      letter-spacing:.05em;
+
+      cursor:pointer;
+
+      transition:.2s;
+    }
+
+    .copyPixBtn:hover{
+      box-shadow:
+        0 0 15px rgba(168,255,18,.35);
+
+      transform:translateY(-1px);
+    }
+
+    .copyPixBtn.copied{
+      background:#071007;
+
+      color:var(--neon);
+    }
+
+    /* =========================
        CELULAR
     ========================= */
 
@@ -828,11 +888,8 @@
     >
 
       <div class="env-back"></div>
-
       <div class="env-left"></div>
-
       <div class="env-right"></div>
-
       <div class="env-flap"></div>
 
       <div class="env-seal">
@@ -921,7 +978,6 @@
           class="action"
           id="whatsappBtn"
         >
-
           <span class="icon">
             ಄
           </span>
@@ -933,7 +989,6 @@
           <span class="actionSmall">
             Falar pelo WhatsApp
           </span>
-
         </button>
 
 
@@ -941,7 +996,6 @@
           class="action"
           id="mapsBtn"
         >
-
           <span class="icon">
             ⌖
           </span>
@@ -953,7 +1007,6 @@
           <span class="actionSmall">
             Abrir no Maps
           </span>
-
         </button>
 
 
@@ -961,7 +1014,6 @@
           class="action"
           id="dateBtn"
         >
-
           <span class="icon">
             17
           </span>
@@ -973,7 +1025,6 @@
           <span class="actionSmall">
             Ver informações
           </span>
-
         </button>
 
 
@@ -981,7 +1032,6 @@
           class="action"
           id="giftBtn"
         >
-
           <span class="icon">
             ★
           </span>
@@ -993,7 +1043,6 @@
           <span class="actionSmall">
             Sugestões de presente
           </span>
-
         </button>
 
       </div>
@@ -1027,13 +1076,9 @@
 
       <div class="eventDate">
 
-        <!-- EDITE A DATA AQUI -->
-
         <span class="date">
-          COLOQUE A DATA AQUI
+          01/11
         </span>
-
-        <!-- EDITE A HORA AQUI -->
 
         <span class="time">
           COLOQUE A HORA AQUI
@@ -1104,12 +1149,14 @@
 
 
         <li>
-          <strong>Caixinhas de mimo:</strong>
-          bottons, photocards e outras coisinhas!
+          <strong>Bolsa lateral:</strong>
+          modelos compactos e estilosos.
+        </li>
 
-          <small>
-            Para personalizar, pergunte o tema pelo WhatsApp.
-          </small>
+
+        <li>
+          <strong>Jogos de bolso:</strong>
+          UNO, Ludo e outros jogos pequenos.
         </li>
 
 
@@ -1130,13 +1177,21 @@
         </li>
 
 
-        <li>
-          <strong>Prefere PIX?</strong>
+        <li class="pixBox">
 
-          <small>
-            Chave:
-            <strong>Pedrinyukky@gmail.com</strong>
-          </small>
+          <strong>Prefere presentear com PIX?</strong>
+
+          <span class="pixKey">
+            Pedrinyukky@gmail.com
+          </span>
+
+          <button
+            class="copyPixBtn"
+            id="copyPixBtn"
+          >
+            COPIAR CHAVE PIX
+          </button>
+
         </li>
 
       </ul>
@@ -1374,6 +1429,67 @@
 
 
     /* =========================
+       COPIAR PIX
+    ========================= */
+
+    document
+      .getElementById('copyPixBtn')
+      .addEventListener(
+        'click',
+        async () => {
+
+          const pix =
+            'Pedrinyukky@gmail.com';
+
+          const button =
+            document.getElementById('copyPixBtn');
+
+          try{
+
+            await navigator.clipboard.writeText(pix);
+
+          }catch(error){
+
+            const input =
+              document.createElement('input');
+
+            input.value = pix;
+
+            document.body.appendChild(input);
+
+            input.select();
+
+            document.execCommand('copy');
+
+            input.remove();
+
+          }
+
+          button.textContent =
+            'CHAVE COPIADA!';
+
+          button.classList.add('copied');
+
+
+          setTimeout(
+            () => {
+
+              button.textContent =
+                'COPIAR CHAVE PIX';
+
+              button.classList.remove(
+                'copied'
+              );
+
+            },
+            2000
+          );
+
+        }
+      );
+
+
+    /* =========================
        FECHAR CLICANDO FORA
     ========================= */
 
@@ -1431,7 +1547,3 @@
 
 </body>
 </html>
-
-Agora o modal de presentes não toma mais a tela inteira: ele fica com aproximadamente 75–78% da altura do celular e, se o conteúdo passar disso, a rolagem acontece dentro do próprio quadrinho.
-
-Também deixei cada presente em uma caixinha pequena, para ficar mais parecido com o visual futurista do restante do convite.
