@@ -332,14 +332,21 @@
       gap:10px;
       margin-top:17px;
     }
-    .giftList li{
-      padding:12px 14px;
-      border:1px solid rgba(168,255,18,.28);
-      border-radius:9px;
-      background:rgba(168,255,18,.05);
-      color:#e9f0e6;
-      font-size:17px;
-    }
+    .giftList li strong{
+  color:var(--neon);
+}
+
+.giftList li small{
+  display:block;
+  margin-top:6px;
+  color:#aeb9aa;
+  font-size:14px;
+  line-height:1.4;
+}
+
+.giftList li{
+  line-height:1.4;
+}
 
     @media(max-width:500px){
       .actions{grid-template-columns:1fr 1fr;gap:10px}
